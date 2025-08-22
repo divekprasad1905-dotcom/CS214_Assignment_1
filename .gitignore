@@ -1,0 +1,43 @@
+### IntelliJ IDEA
+.idea/
+*.iml
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### Eclipse
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code
+.vscode/
+
+### OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+### Logs / temp
+*.log
+/tmp/
+
+### Project-specific (keep CSV results, ignore dev dumps)
+# Keep your benchmark CSVs (e.g., results/array_results.csv, results/linked_results.csv)
+# but ignore large debug text dumps:
+results/*_sample.txt
+results/*_full.txt
