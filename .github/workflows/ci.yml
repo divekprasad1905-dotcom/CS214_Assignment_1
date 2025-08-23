@@ -1,0 +1,40 @@
+name: build-and-smoke
+
+on:
+  pull_request:
+    branches: [ dev, main ]   # run for PRs into protected branches
+  push:
+    branches: [ dev ]         # run on direct pushes to dev (you)
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Compile (plain javac)
+        run: |
+          mkdir -p out
+          find src -name "*.java" > sources.txt
+          javac -d out @sources.txt
+
+      - name: Smoke test (array, sorted dry-run on sample CSV)
+        if: ${{ hashFiles('data/Article_sample.csv') != '' }}
+        run: |
+          java -cp out app.Cli \
+            --csv=data/Article_sample.csv \
+            --algo=none \
+            --structure=array \
+            --sorted=true
+
+      - name: Note if sample missing
+        if: ${{ hashFiles('data/Article_sample.csv') == '' }}
+        run: echo "No data/Article_sample.csv found; skipping smoke run."
