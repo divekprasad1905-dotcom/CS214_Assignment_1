@@ -16,4 +16,9 @@ public class Article {
         this.cs = cs; this.physics = physics; this.math = math;
         this.stats = stats; this.qbio = qbio; this.qfin = qfin;
     }
+
+    public String getTitle() {
+        return title;
+    }
+
 }
