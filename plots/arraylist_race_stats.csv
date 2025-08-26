@@ -1,0 +1,5 @@
+Algorithm,Best,Mean,Worst
+Linear Search (ArrayList),1,76.47,100
+Binary Search (ArrayList),5,6.53,7
+Jump Search (ArrayList),1,10.47,16
+Fibonacci Search (ArrayList),3,8.27,10
